@@ -3,14 +3,11 @@ package pages
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
-import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 
-class LoginScreenPage(
-    private val rule: ComposeContentTestRule
-) {
+class LoginScreenPage(override val rule: ComposeContentTestRule) : BasePage(rule) {
     //elements semantic
     private val usernameInput = rule.onNodeWithTag("username_input")
     private val passwordInput = rule.onNodeWithTag("password_input")
@@ -19,19 +16,19 @@ class LoginScreenPage(
     private val welcomeText = rule.onNodeWithTag("welcome_text")
 
 
-    fun enterUserName(username: String){
+    fun enterUserName(username: String) {
         usernameInput.performTextInput(username)
     }
 
-    fun enterPassword(pass: String){
+    fun enterPassword(pass: String) {
         passwordInput.performTextInput(pass)
     }
 
-    fun tapLogin(){
+    fun tapLogin() {
         loginButton.performClick()
     }
 
-    fun loginAs(username: String, pass: String){
+    fun loginAs(username: String, pass: String) {
         enterUserName(username)
         enterPassword(pass)
         tapLogin()
@@ -39,31 +36,24 @@ class LoginScreenPage(
     }
 
     //assertions
-    fun asserInitialState(){
+    fun asserInitialState() {
         usernameInput.assertIsDisplayed()
         passwordInput.assertIsDisplayed()
         loginButton.assertIsDisplayed()
     }
 
     fun assertErrorIsShown() {
-        rule.waitUntil(timeoutMillis = 3_000)
-        {
-            rule.onAllNodesWithTag("welcome_text").fetchSemanticsNodes().isNotEmpty()
-        }
+        waitForNodeWithTag("welcome_text")
         welcomeText.assertIsDisplayed()
     }
 
-    fun assertWelcomeMessage(){
-        rule.waitUntil(timeoutMillis = 3_000){
-            rule.onAllNodesWithTag("welcome_text").fetchSemanticsNodes().isNotEmpty()
-        }
+    fun assertWelcomeMessage() {
+       waitForNodeWithTag("welcome_text")
         welcomeText.assertIsDisplayed()
     }
+
     fun assertInvalidCredentialsError() {
-        rule.waitUntil(timeoutMillis = 3_000) {
-            rule.onAllNodesWithTag("error_message")
-                .fetchSemanticsNodes().isNotEmpty()
-        }
+      waitForNodeWithTag("error_message")
 
         errorMessage
             .assertIsDisplayed()
