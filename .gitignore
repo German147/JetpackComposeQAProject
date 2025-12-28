@@ -1,0 +1,110 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+####################################
+# Android / Gradle
+####################################
+.gradle/
+build/
+**/build/
+local.properties
+
+####################################
+# Android Studio
+####################################
+.idea/
+*.iml
+*.ipr
+*.iws
+.idea/caches/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/deploymentTargetDropDown.xml
+
+####################################
+# OS files
+####################################
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+####################################
+# Logs
+####################################
+*.log
+
+####################################
+# APK / AAB
+####################################
+*.apk
+*.aab
+
+####################################
+# Signing / Secrets
+####################################
+*.jks
+*.keystore
+*.pem
+*.properties
+
+####################################
+# Kotlin / Java
+####################################
+*.class
+out/
+
+####################################
+# Android Emulator / AVD
+####################################
+.avd/
+*.avd
+*.lock
+*.ini
+
+####################################
+# Lint / Reports
+####################################
+lint/
+lint-results*.html
+lint-results*.xml
+lint-results*.txt
+
+####################################
+# Test / Coverage reports
+####################################
+**/reports/
+**/test-results/
+**/coverage/
+
+####################################
+# Firebase / Google services
+####################################
+google-services.json
+firebase.json
+
+####################################
+# NDK
+####################################
+.externalNativeBuild/
+.cxx/
+
+####################################
+# Temporary / Generated
+####################################
+captures/
+tmp/
