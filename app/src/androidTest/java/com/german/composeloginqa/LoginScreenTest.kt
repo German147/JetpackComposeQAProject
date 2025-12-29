@@ -14,6 +14,9 @@ class LoginScreenTest {
     @get:Rule
     val composeTestRule = createAndroidComposeRule<MainActivity>()
 
+    @get:Rule
+    val screenshotRule = ScreenshotOnFailureRule(composeTestRule)
+
     private val loginPage by lazy{
         LoginScreenPage(composeTestRule)
     }
@@ -25,8 +28,14 @@ class LoginScreenTest {
     }
 
     @Test
-    fun login_withValidCredentials_showsError(){
+    fun login_withValidCredentials(){
         loginPage.loginAs("admin","1234")
+        loginPage.assertWelcomeMessage()
+    }
+
+    @Test
+    fun login_withValidCredentials_Fails(){
+        loginPage.loginAs("adminsde","1234")
         loginPage.assertWelcomeMessage()
     }
 
